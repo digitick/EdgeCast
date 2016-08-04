@@ -4,14 +4,14 @@
  *
  * @author Digitick <dev@digitick.com>
  */
-namespace Digitick\ThirdParty;
+namespace Digitick\ThirdParty\EdgeCast;
 
 use GuzzleHttp\ClientInterface as HttpClientInterface;
 
 /**
  * EdgeCast API Client
  */
-class EdgeCast
+class Client implements ClientInterface
 {
     /**
      * Default EdgeCast APi endpoit
@@ -135,10 +135,14 @@ class EdgeCast
             'Content-Type'  =>  'application/json'
         ];
 
-        $response = $this->http_client->put($this->endpoint . $method, [
-            'headers' => $headers,
-            'json' => $data
-        ]);
+        try {
+            $response = $this->http_client->put($this->endpoint . $method, [
+                'headers' => $headers,
+                'json' => $data
+            ]);
+        } catch (\Exception $e) {
+            return false;
+        }
 
         return 200 === $response->getStatusCode();
     }
