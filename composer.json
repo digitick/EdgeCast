@@ -1,0 +1,22 @@
+{
+    "name": "digitick/edgecast",
+    "description": "EdgeCast API Client in PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mallory Mollo",
+            "email": "mallory.mollo@digitick.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Digitick\\": "src/Digitick"
+        }
+    },
+    "require": {
+        "php": ">=5.4",
+        "guzzlehttp/guzzle": "5.3.1"
+    }
+}
