@@ -97,7 +97,7 @@ class Client implements ClientInterface
     {
         $data = [
             'MediaType' => $media_type,
-            'MediaPath' => $pattern
+            'MediaPath' => $this->cdn_url . $pattern
         ];
 
         return $this->request(self::METHOD_PURGE, $data);
@@ -107,14 +107,14 @@ class Client implements ClientInterface
      * Preloads the EdgeCast cache for a given url
      *
      * @param  int    $media_type Numerical identifier for the type of media to load
-     * @param  string $url        URL of the media to load
+     * @param  string $path       Path of the media to load
      * @return bool   True if the media has been loaded by EdgeCast
      */
-    public function load($media_type, $url)
+    public function load($media_type, $path)
     {
         $data = [
             'MediaType' => $media_type,
-            'MediaPath' => $url
+            'MediaPath' => $this->cdn_url . $path
         ];
 
         return $this->request(self::METHOD_LOAD, $data);
